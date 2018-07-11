@@ -37,6 +37,7 @@ function initializeApp(data) {
             window.alert("Message sent");
         }).catch(function (error) {
             window.alert("Error sending message: " + error);
+            window.alert('a');
         });
     });
 
