@@ -19,7 +19,9 @@
     "url": "https://github.com/minddrop/line-liff-starter/issues"
   },
   "homepage": "https://github.com/minddrop/line-liff-starter#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.3"
+  },
   "devDependencies": {
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8"

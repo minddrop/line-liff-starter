@@ -66,7 +66,19 @@
             </tr>
         </table>
     </div>
-
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDtdXKCxNn24hBoXNny7FnOkwqwFxUg_xc",
+            authDomain: "line-liff-chat.firebaseapp.com",
+            databaseURL: "https://line-liff-chat.firebaseio.com",
+            projectId: "line-liff-chat",
+            storageBucket: "line-liff-chat.appspot.com",
+            messagingSenderId: "528917033941"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="./line-liff-chat.js"></script>
 </body>
