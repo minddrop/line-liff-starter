@@ -5,7 +5,7 @@
   "main": "liff-starter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./public/line-liff-chat.js",
+    "start": "webpack --watch",
     "build": "webpack",
     "heroku-postbuild": "webpack -p"
   },
