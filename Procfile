@@ -1,1 +1,1 @@
-web: webpack --watch
+worker: webpack --watch
