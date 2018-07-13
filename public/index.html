@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIFF Starter</title>
     <link rel="stylesheet" href="style.css">
@@ -81,4 +81,32 @@
     </script>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="./line-liff-chat.js"></script>
-</body>
+</body> -->
+
+<!DOCTYPE html>
+<html>
+
+<div id="main">
+    <div id='messages'></div>
+    <textarea id="name" rows="3" cols="10" placeholder="Your nickname"></textarea>
+    <textarea id="body" rows="3" cols="60" placeholder="Let's chatting!"></textarea>
+    <button id="submit">Submit</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp(
+        {
+            apiKey: "AIzaSyDtdXKCxNn24hBoXNny7FnOkwqwFxUg_xc",
+            authDomain: "line-liff-chat.firebaseapp.com",
+            databaseURL: "https://line-liff-chat.firebaseio.com",
+            projectId: "line-liff-chat",
+            storageBucket: "line-liff-chat.appspot.com",
+            messagingSenderId: "528917033941"
+        }
+    )
+</script>
+<script src="./line-liff-chat.js"></script>
+
+</html>
