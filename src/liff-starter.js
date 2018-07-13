@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const roomTest = firebase.firestore().collection('chat-test')
+    const roomTest = firebase.firestore().collection('chat-test');
+    const chatBoard = document.querySelector('#board');
     document.querySelector('#submit').addEventListener('click', (event) => {
-        const chatBody = document.querySelector('#body')
-        const chatName = document.querySelector('#name')
-        if (!chatBody.value) alert('Enter your message')
+        const chatBody = document.querySelector('#body');
+        const chatName = document.querySelector('#name');
+        if (!chatBody.value) alert('Enter your message');
         else {
             roomTest.add(
                 {
