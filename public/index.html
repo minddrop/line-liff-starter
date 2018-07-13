@@ -86,12 +86,22 @@
 <!DOCTYPE html>
 <html>
 
-<div id="main">
-    <div id='messages'></div>
-    <textarea id="name" rows="3" cols="10" placeholder="Your nickname"></textarea>
-    <textarea id="body" rows="3" cols="60" placeholder="Let's chatting!"></textarea>
-    <button id="submit">Submit</button>
-</div>
+<head>
+    <meta charset="utf-8" />
+    <title>liff chat</title>
+</head>
+
+<body>
+    <div id="main">
+        <div id='messages'></div>
+        <textarea id="name" rows="3" cols="10" placeholder="Your nickname"></textarea>
+        <textarea id="body" rows="3" cols="60" placeholder="Let's chatting!"></textarea>
+        <button id="submit">Submit</button>
+    </div>
+    <ul id="board" style="list-style:none;">
+        <li></li>
+    </ul>
+</body>
 
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
