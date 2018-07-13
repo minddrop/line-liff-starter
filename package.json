@@ -2,7 +2,7 @@
   "name": "line-liff-starter",
   "version": "1.0.0",
   "description": "This is a small web application that demonstrates the basic functionality of the [LINE Front-end Framework (LIFF)](https://developers.line.me/en/docs/liff/overview/).",
-  "main": "liff-starter.js",
+  "main": "line-liff-chat.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
