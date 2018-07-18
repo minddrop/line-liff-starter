@@ -1,6 +1,40 @@
+
 document.addEventListener('DOMContentLoaded', function () {
-    const roomTest = firebase.firestore().collection('chat-test');
+    const chatTestCol = firebase.firestore().collection('chat-test');
     const chatBoard = document.querySelector('#board');
+
+    const songs = ["a", "b"];
+    const fragment = document.createDocumentFragment();
+    for (let i = 0, len = songs.length; i < len; i++) {
+        const li = document.createElement('li');
+        const nyou = document.createElement('li');
+        const song = document.createTextNode(songs[i]);
+        li.appendChild(song);
+        nyou.appendChild(document.createTextNode('name:minddrop'));
+        fragment.appendChild(li); // fragmentの追加する
+        fragment.appendChild(nyou);
+    }
+    chatBoard.appendChild(fragment);
+
+    // chatTestCol.onSnapShot(snapshot => {
+    //     snapshot.get().forEach(element => {
+
+    //     });
+    // })
+    chatTestCol.get().forEach(snapshot => {
+        for (let i = 0, len = songs.length; i < len; i++) {
+            const songs = ["a", "b"];
+            let fragment = document.createDocumentFragment();
+            const li = document.createElement('li');
+            const nyou = document.createElement('li');
+            const song = document.createTextNode(songs[i]);
+            li.appendChild(song);
+            nyou.appendChild(document.createTextNode('name:minddrop'));
+            fragment.appendChild(li); // fragmentの追加する
+            fragment.appendChild(nyou);
+        }
+        chatBoard.appendChild(fragment);
+    })
     document.querySelector('#submit').addEventListener('click', (event) => {
         const chatBody = document.querySelector('#body');
         const chatName = document.querySelector('#name');
