@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const chatName = document.querySelector('#name');
         if (!chatBody.value) alert('Enter your message');
         else {
-            roomTest.add(
+            chatTestCol.add(
                 {
                     body: chatBody.value,
                     date: Date.now(),
