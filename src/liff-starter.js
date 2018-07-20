@@ -31,10 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 fragment.appendChild(name);
                 fragment.appendChild(message);
             });
+            chatBoard.appendChild(fragment);
         });
-        console.log(fragment);
-        chatBoard.appendChild(fragment);
-        console.log("fin");
     })
     document.querySelector("#submit").addEventListener("click", (event) => {
         const chatBody = document.querySelector("#body");
