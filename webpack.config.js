@@ -1,7 +1,7 @@
 // outputにabsolute pathいれるときにpath読み込むために必要となるmodule
 const path = require('path');
 module.exports = {
-  mode: 'development', devtool: 'source-map',// watchしたいからdevelopment
+  mode: 'development', devtool: 'eval-source-map',// watchしたいからdevelopment
   entry: {
     "line-liff-chat": [
       path.resolve(__dirname, "src/liff-starter.js")

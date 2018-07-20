@@ -93,7 +93,141 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const chatTestCol = firebase.firestore().collection(\"chat-test\");\n    const chatBoard = document.querySelector(\"#board\");\n\n    // const songs = [\"a\", \"b\"];\n    // const fragment = document.createDocumentFragment();\n    // for (let i = 0, len = songs.length; i < len; i++) {\n    //     const li = document.createElement(\"li\");\n    //     const nyou = document.createElement(\"li\");\n    //     const song = document.createTextNode(songs[i]);\n    //     li.appendChild(song);\n    //     nyou.appendChild(document.createTextNode(\"name:minddrop\"));\n    //     fragment.appendChild(li); // fragmentの追加する\n    //     fragment.appendChild(nyou);\n    // }\n    // chatBoard.appendChild(fragment);\n\n    chatTestCol.onSnapshot(querySnapshot => {\n        const fragment = document.createDocumentFragment();\n        chatTestCol.get().then(querySnapshot => {\n            querySnapshot.forEach(doc => {\n                data = doc.data();\n                const name = document.createElement(\"li\");\n                const message = document.createElement(\"li\");\n                const date = document.createElement(\"li\");\n                name.appendChild(document.createTextNode(\"name: \" + data.name));\n                date.appendChild(document.createTextNode(\"date: \" + new Date(data.date)));\n                message.appendChild(document.createTextNode(data.body));\n                fragment.appendChild(date);\n                fragment.appendChild(name);\n                fragment.appendChild(message);\n            });\n        });\n        console.log(fragment);\n        chatBoard.appendChild(fragment);\n        console.log(\"fin\");\n    })\n    document.querySelector(\"#submit\").addEventListener(\"click\", (event) => {\n        const chatBody = document.querySelector(\"#body\");\n        const chatName = document.querySelector(\"#name\");\n        if (!chatName.value) alert(\"Enter your name\")\n        else if (!chatBody.value) alert(\"Enter your message\");\n        else {\n            chatTestCol.add(\n                {\n                    body: chatBody.value,\n                    date: Date.now(),\n                    name: chatName.value,\n                }\n            ).then(\n                () => {\n                    chatBody.value = \"\";\n                    chatName.value = \"\";\n                }\n            ).catch(e => { alert(e); });\n        }\n    })\n})\n\n// window.onload = function (e) {\n//     liff.init(function (data) {\n//         initializeApp(data);\n//     });\n// };\n\n// function initializeApp(data) {\n//     document.getElementById(\"languagefield\").textContent = data.language;\n//     document.getElementById(\"viewtypefield\").textContent = data.context.viewType;\n//     document.getElementById(\"useridfield\").textContent = data.context.userId;\n//     document.getElementById(\"utouidfield\").textContent = data.context.utouId;\n//     document.getElementById(\"roomidfield\").textContent = data.context.roomId;\n//     document.getElementById(\"groupidfield\").textContent = data.context.groupId;\n\n//     // openWindow call\n//     document.getElementById(\"openwindowbutton\").addEventListener(\"click\", function () {\n//         liff.openWindow({\n//             url: \"https://line.me\"\n//         });\n//     });\n\n//     // closeWindow call\n//     document.getElementById(\"closewindowbutton\").addEventListener(\"click\", function () {\n//         liff.closeWindow();\n//     });\n\n//     // sendMessages call\n//     document.getElementById(\"sendmessagebutton\").addEventListener(\"click\", function () {\n//         liff.sendMessages([{\n//             type: \"text\",\n//             text: \"You\"ve successfully sent a message! Hooray!\"\n//         }, {\n//             type: \"sticker\",\n//             packageId: \"2\",\n//             stickerId: \"144\"\n//         }]).then(function () {\n//             window.alert(\"Message sent\");\n//         }).catch(function (error) {\n//             window.alert(\"Error sending message: \" + error);\n//             window.alert(\"a\");\n//         });\n//     });\n\n//     //get profile call\n//     document.getElementById(\"getprofilebutton\").addEventListener(\"click\", function () {\n//         liff.getProfile().then(function (profile) {\n//             document.getElementById(\"useridprofilefield\").textContent = profile.userId;\n//             document.getElementById(\"displaynamefield\").textContent = profile.displayName;\n\n//             var profilePictureDiv = document.getElementById(\"profilepicturediv\");\n//             if (profilePictureDiv.firstElementChild) {\n//                 profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);\n//             }\n//             var img = document.createElement(\"img\");\n//             img.src = profile.pictureUrl;\n//             img.alt = \"Profile Picture\";\n//             profilePictureDiv.appendChild(img);\n\n//             document.getElementById(\"statusmessagefield\").textContent = profile.statusMessage;\n//             toggleProfileData();\n//         }).catch(function (error) {\n//             window.alert(\"Error getting profile: \" + error);\n//         });\n//     });\n// }\n\n// function toggleProfileData() {\n//     var elem = document.getElementById(\"profileinfo\");\n//     if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {\n//         elem.style.display = \"none\";\n//     } else {\n//         elem.style.display = \"block\";\n//     }\n// }\n\n\n//# sourceURL=webpack:///./src/liff-starter.js?");
+
+document.addEventListener("DOMContentLoaded", function () {
+    const chatTestCol = firebase.firestore().collection("chat-test");
+    const chatBoard = document.querySelector("#board");
+
+    // const songs = ["a", "b"];
+    // const fragment = document.createDocumentFragment();
+    // for (let i = 0, len = songs.length; i < len; i++) {
+    //     const li = document.createElement("li");
+    //     const nyou = document.createElement("li");
+    //     const song = document.createTextNode(songs[i]);
+    //     li.appendChild(song);
+    //     nyou.appendChild(document.createTextNode("name:minddrop"));
+    //     fragment.appendChild(li); // fragmentの追加する
+    //     fragment.appendChild(nyou);
+    // }
+    // chatBoard.appendChild(fragment);
+
+    chatTestCol.onSnapshot(querySnapshot => {
+        const fragment = document.createDocumentFragment();
+        chatTestCol.get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                data = doc.data();
+                const name = document.createElement("li");
+                const message = document.createElement("li");
+                const date = document.createElement("li");
+                name.appendChild(document.createTextNode("name: " + data.name));
+                date.appendChild(document.createTextNode("date: " + new Date(data.date)));
+                message.appendChild(document.createTextNode(data.body));
+                fragment.appendChild(date);
+                fragment.appendChild(name);
+                fragment.appendChild(message);
+            });
+        });
+        console.log(fragment);
+        chatBoard.appendChild(fragment);
+        console.log("fin");
+    })
+    document.querySelector("#submit").addEventListener("click", (event) => {
+        const chatBody = document.querySelector("#body");
+        const chatName = document.querySelector("#name");
+        if (!chatName.value) alert("Enter your name")
+        else if (!chatBody.value) alert("Enter your message");
+        else {
+            chatTestCol.add(
+                {
+                    body: chatBody.value,
+                    date: Date.now(),
+                    name: chatName.value,
+                }
+            ).then(
+                () => {
+                    chatBody.value = "";
+                    chatName.value = "";
+                }
+            ).catch(e => { alert(e); });
+        }
+    })
+})
+
+// window.onload = function (e) {
+//     liff.init(function (data) {
+//         initializeApp(data);
+//     });
+// };
+
+// function initializeApp(data) {
+//     document.getElementById("languagefield").textContent = data.language;
+//     document.getElementById("viewtypefield").textContent = data.context.viewType;
+//     document.getElementById("useridfield").textContent = data.context.userId;
+//     document.getElementById("utouidfield").textContent = data.context.utouId;
+//     document.getElementById("roomidfield").textContent = data.context.roomId;
+//     document.getElementById("groupidfield").textContent = data.context.groupId;
+
+//     // openWindow call
+//     document.getElementById("openwindowbutton").addEventListener("click", function () {
+//         liff.openWindow({
+//             url: "https://line.me"
+//         });
+//     });
+
+//     // closeWindow call
+//     document.getElementById("closewindowbutton").addEventListener("click", function () {
+//         liff.closeWindow();
+//     });
+
+//     // sendMessages call
+//     document.getElementById("sendmessagebutton").addEventListener("click", function () {
+//         liff.sendMessages([{
+//             type: "text",
+//             text: "You"ve successfully sent a message! Hooray!"
+//         }, {
+//             type: "sticker",
+//             packageId: "2",
+//             stickerId: "144"
+//         }]).then(function () {
+//             window.alert("Message sent");
+//         }).catch(function (error) {
+//             window.alert("Error sending message: " + error);
+//             window.alert("a");
+//         });
+//     });
+
+//     //get profile call
+//     document.getElementById("getprofilebutton").addEventListener("click", function () {
+//         liff.getProfile().then(function (profile) {
+//             document.getElementById("useridprofilefield").textContent = profile.userId;
+//             document.getElementById("displaynamefield").textContent = profile.displayName;
+
+//             var profilePictureDiv = document.getElementById("profilepicturediv");
+//             if (profilePictureDiv.firstElementChild) {
+//                 profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+//             }
+//             var img = document.createElement("img");
+//             img.src = profile.pictureUrl;
+//             img.alt = "Profile Picture";
+//             profilePictureDiv.appendChild(img);
+
+//             document.getElementById("statusmessagefield").textContent = profile.statusMessage;
+//             toggleProfileData();
+//         }).catch(function (error) {
+//             window.alert("Error getting profile: " + error);
+//         });
+//     });
+// }
+
+// function toggleProfileData() {
+//     var elem = document.getElementById("profileinfo");
+//     if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
+//         elem.style.display = "none";
+//     } else {
+//         elem.style.display = "block";
+//     }
+// }
+
 
 /***/ }),
 
@@ -104,8 +238,10 @@ eval("\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /home/ryu/src/line-liff-starter/src/liff-starter.js */\"./src/liff-starter.js\");\n\n\n//# sourceURL=webpack:///multi_./src/liff-starter.js?");
+module.exports = __webpack_require__(/*! /home/ryu/src/line-liff-starter/src/liff-starter.js */"./src/liff-starter.js");
+
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=line-liff-chat.js.map
