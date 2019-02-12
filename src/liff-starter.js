@@ -4,6 +4,7 @@ console.log(
     .ref()
     .child('a.txt').fullPath
 )
+console.log('a')
 document.addEventListener('DOMContentLoaded', function() {
   const chatTestCol = firebase.firestore().collection('chat-test')
   const chatBoard = document.querySelector('#board')
